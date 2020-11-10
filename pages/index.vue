@@ -23,12 +23,6 @@
 
         <a
           class="tracking-tight cursor-pointer"
-          @click="$auth.loginWith('local')"
-          >Sign in with Local</a
-        >
-
-        <a
-          class="tracking-tight cursor-pointer"
           @click="$auth.loginWith('social')"
           >Sign in with Microsoft</a
         >
