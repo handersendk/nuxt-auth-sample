@@ -51,49 +51,28 @@ export default {
       callback: "/auth"
     },
     strategies: {
-      aad: {
-        scheme: "oauth2",
-        endpoints: {
-          authorization:
-            "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
-          token: "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-          userInfo: "",
-          logout: "/"
-        },
-        token: {
-          property: "access_token",
-          type: "Bearer",
-          maxAge: 1800
-        },
-        refreshToken: {
-          property: "refresh_token",
-          maxAge: 60 * 60 * 24 * 30
-        },
-        responseType: "code",
-        grantType: "authorization_code",
-        accessType: "offline",
-        // ******** change this for your Application (Client) ID ********
-        clientId: "37014aa9-a961-47ce-bb9e-868cba98a0b2",
-        codeChallengeMethod: "S256",
-        scope: ["openid", "profile"],
-        autoLogout: true
-      },
-      local: {
-        token: {
-          property: "token"
-          // required: true,
-          // type: 'Bearer'
-        },
-        user: {
-          property: "user"
-          // autoFetch: true
-        },
-        endpoints: {
-          login: { url: "/api/auth/login", method: "post" },
-          logout: { url: "/api/auth/logout", method: "post" },
-          user: { url: "/api/auth/user", method: "get" }
-        }
+      social: {
+        _scheme: "oauth2",
+        authorization_endpoint:
+          "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        userinfo_endpoint: "https://graph.microsoft.com/oidc/userinfo",
+        scope: ["openid"],
+        access_type: "code",
+        access_token_endpoint: undefined,
+        response_type: "token",
+        token_type: "Bearer",
+        redirect_uri: undefined,
+        client_id: "293fede3-b400-4969-98bf-17f7f5837b5a",
+        token_key: "access_token",
+        state: "RANDOME"
       }
+    }
+  },
+  cookie: {
+    prefix: "auth.",
+    options: {
+      path: "/",
+      maxAge: 300
     }
   }
 };

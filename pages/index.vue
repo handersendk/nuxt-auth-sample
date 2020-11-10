@@ -27,9 +27,13 @@
           >Sign in with Local</a
         >
 
-        <a class="tracking-tight cursor-pointer" @click="$auth.loginWith('aad')"
+        <a
+          class="tracking-tight cursor-pointer"
+          @click="$auth.loginWith('social')"
           >Sign in with Microsoft</a
         >
+        Hello World
+        {{ this.$auth.user }}
       </div>
     </div>
   </div>
