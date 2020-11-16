@@ -56,7 +56,10 @@ export default {
         authorization_endpoint:
           "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
         userinfo_endpoint: "https://graph.microsoft.com/oidc/userinfo",
-        scope: ["openid"],
+        scope: [
+          "openid",
+          "https://haptio.onmicrosoft.com/293fede3-b400-4969-98bf-17f7f5837b5a/read"
+        ],
         access_type: "code",
         access_token_endpoint: undefined,
         response_type: "token",

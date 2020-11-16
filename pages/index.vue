@@ -4,37 +4,31 @@
       <Logo />
       <h1 class="title">nuxt-auth-sample</h1>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
+        <a @click="$auth.loginWith('social')" class="button--grey">
+          Sign in with Microsoft
         </a>
 
-        <a
-          class="tracking-tight cursor-pointer"
-          @click="$auth.loginWith('social')"
-          >Sign in with Microsoft</a
-        >
-        Hello World
-        {{ this.$auth.user }}
+        <a @click="$auth.logout()" class="button--grey"> Sign out </a>
+
+        <a @click="fetchSomething()" class="button--grey"> fetchSomething </a>
+        <p>
+          HELLO
+          {{ this.$auth.user }}
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    async fetchSomething() {
+      const ip = await this.$axios.$get("/api/healthcheck");
+      this.ip = ip;
+    },
+  },
+};
 </script>
 
 <style>
